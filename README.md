@@ -4,6 +4,7 @@ I used this script to move a lot of pdf books that contain certain word in their
 It's not most efficient way, but it worked for me.
 
 Usage flm [OPTIONS]
+
 	-s	source directory (default is current directory)
 	-t	target directory (default is current directory)
 	-p	default pattern to search for

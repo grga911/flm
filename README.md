@@ -1,6 +1,6 @@
 # flm
-Simple script for moving files
-I used this script to move a lot of pdf books that contain certain word in their title (file name)
+Simple script for moving files.
+I used this script to move a lot of pdf books that contain certain word in their title (file name).
 It's not most efficient way, but it worked for me.
 
 Usage flm [OPTIONS]

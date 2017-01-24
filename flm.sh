@@ -47,10 +47,10 @@ function dialog {
 while getopts ":p:r:s:t:e:c" opt; do
  		case $opt in
  		p)
- 			default_patern=$OPTARG	>&2
+ 			default_pattern=$OPTARG	>&2
  			;;
  		r)
- 			custom_patern=$OPTARG	>&2
+ 			custom_pattern=$OPTARG	>&2
  			;;
  		s)
  			source_dir=$OPTARG	>&2
@@ -89,38 +89,37 @@ done
 #
 
 #
-#-r switch gives user ability to define his own custom_patern default_patern
+#-r switch gives user ability to define his own custom pattern or default pattern
 
-default_patern=${default_patern:-"$extension"}
+default_pattern=${default_pattern:-"$extension"}
 
 source_dir=${source_dir:-"./"}
 
 action=${action:-"mv -vnu"}
 
-target_folder="$default_patern"
+target_folder="$default_pattern"
 
 target_directory=${target_directory:-"$CURENTDIR/$target_folder"}
 #
-# if there is no -r swith create default default_patern for search
-# use argument of -p switch to create default custom_patern default_patern
+# if there is no -r swith create default default_pattern for search
+# use argument of -p switch to create default custom_pattern default_pattern
 #
-custom_patern=${custom_patern:-'.*'"$default_patern"'.*'"$extension"'$'}
+custom_pattern=${custom_pattern:-'.*'"$default_pattern"'.*'"$extension"'$'}
 
-# check if default_patern is found and if nothing is found ask for new default_patern
+# check if default_pattern is found and if nothing is found ask for new default_pattern
 # exit if user inputs q or Q
 #
 
 until [[ "$result" != "" ]]; do
 
-	result=$(find "$source_dir" -maxdepth 1 -type f -iregex "$custom_patern")
-	echo "$result"
+	result=$(find "$source_dir" -maxdepth 1 -type f -iregex "$custom_pattern")
 	if [[ "$result" == "" ]]; then
-		echo "Nothing found, please enter a new patern, or insert q to quit"
-		read default_patern
-			if [[ "$default_patern" == [qQ] ]]; then
+		echo "Nothing found, please enter a new pattern, or insert q to quit"
+		read default_pattern
+			if [[ "$default_pattern" == [qQ] ]]; then
 				exit 1
 			fi
-		custom_patern='.*'"$default_patern"'.*'"$extension"'$'
+		custom_pattern='.*'"$default_pattern"'.*'"$extension"'$'
 	fi
 done
 
@@ -173,5 +172,5 @@ until [[ -d "$target_directory" ]]; do
 done
 
 #finaly we move or copy our files to a new destination
-		find "$source_dir" -maxdepth 1 -type f -iregex "$custom_patern" -exec $action {} "$target_directory" \;
+		find "$source_dir" -maxdepth 1 -type f -iregex "$custom_pattern" -exec $action {} "$target_directory" \;
 exit 0

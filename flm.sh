@@ -8,9 +8,9 @@ if [ $# -lt 1 -o "$1" == "--help" -o "$1" == "-h" ]; then
  	printf " Usage filemov [OPTIONS]
 \t-s\tsource directory (default is current directory)
 \t-t\ttarget directory (default is current directory)
-\t-p\tword default_pattern to search for
+\t-p\tword default pattern to search for
 \t-e\tfile extension
-\t-r\tuser custom_partner input
+\t-r\tuser custom pattern input
 \t-c\tcopy files instead of moving\n"
  	exit 1
 fi
@@ -32,7 +32,7 @@ function dialog {
 		CHOICE=''
 		local prompt="$*"
 		local answer
-		read -p "$promote" answer
+		read -p "$prompt" answer
 		case "$answer" in
 			[Yy] ) CHOICE='y';;
  			[nN] ) CHOICE='n';;

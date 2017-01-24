@@ -36,7 +36,7 @@ function dialog {
 		case "$answer" in
 			[Yy] ) CHOICE='y';;
  			[nN] ) CHOICE='n';;
- 			*	 ) CHOICE="$answer"
+ 			*	) CHOICE="$answer"
 		esac
 }
 
@@ -161,7 +161,7 @@ done
 
 until [[ -d "$target_directory" ]]; do
  		dialog "Directory doesn't exist, do you wish to create it? Y/n"
- 		echo ""
+		
  		if [[ -z "$CHOICE" ]] || [[ "$CHOICE" == "y" ]] && [[ ! -d "$target_directory" ]] ; then
  			mkdir "$target_directory"
  		elif [[ -d "$target_directory" ]]; then

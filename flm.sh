@@ -9,8 +9,8 @@ if [ $# -lt 1 -o "$1" == "--help" -o "$1" == "-h" ]; then
 \t-s\tsource directory (default is current directory)
 \t-t\ttarget directory (default is current directory)
 \t-p\tword default pattern to search for
-\t-e\tfile extension
-\t-r\tuser custom pattern input
+\t-e\tfile extension (use -pe when searching only extensions)
+\t-r\tcustom user pattern input (use regex)
 \t-c\tcopy files instead of moving\n"
  	exit 1
 fi
@@ -90,8 +90,6 @@ done
 
 #
 #-r switch gives user ability to define his own custom pattern or default pattern
-
-default_pattern=${default_pattern:-"$extension"}
 
 source_dir=${source_dir:-"./"}
 

@@ -1,2 +1,2 @@
 # flm
-Simple script for movin files
+Simple script for moving files

@@ -120,7 +120,6 @@ action=${action:-"mv -vnu"}
 # also strip down illegal characters
 if [[ "$target_directory" == "" ]]; then
 	target_folder=$(echo $default_pattern |sed -e 's/ /_/g' -e 's/[!@#$%^&*+=?><,.\/:|`]//g')
-	echo $target_folder
 else
 	target_directory=$(echo $target_directory |sed -e 's/ /_/g' -e 's/[!@#$%^&*+=?><,.\/:|`]//g')
 fi
